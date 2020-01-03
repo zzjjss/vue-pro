@@ -1,0 +1,44 @@
+// 不换行+省略号
+no-wrap()
+  overflow hidden
+  white-space nowrap
+  text-overflow ellipsis
+// 最多两行加省略号
+no-wrap-2()
+  text-overflow -o-ellipsis-lastline
+  overflow hidden
+  text-overflow ellipsis
+  display -webkit-box
+  -webkit-line-clamp 2
+  -webkit-box-orient vertical
+// 背景图片
+image($url)
+  background-image rul($url + '@2x.png')
+  @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3)
+    background-image url($url + '@3x.png')
+// 一像素上边框
+border-top-1px($color)
+  position relative
+  &::before
+    content ''
+    position absolute
+    z-index 200
+    left 0
+    top 0
+    width 100%
+    height 1px
+    background-color $color
+    transform scaleY(0.5)
+// 一像素下边框
+boder-bottom-1px($color)
+  position relative
+  border none
+  &:after
+    content ''
+    position absolute
+    left 0
+    bottom 0
+    width 100%
+    height 1px
+    background-color $color
+    transform scaleY(0.5)
